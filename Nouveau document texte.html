@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VelocityHost × Tunisian Dreams</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --neon-blue: #00f3ff;
+            --cyber-purple: #bc00ff;
+            --deep-space: #01011b;
+            --hologram-teal: #00ffc8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--deep-space);
+            font-family: 'Inter', sans-serif;
+            color: white;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .cyber-frame {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .main-header {
+            text-align: center;
+            margin-bottom: 6rem;
+            position: relative;
+            padding: 0 2rem;
+        }
+
+        .title-glitch {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(3rem, 6vw, 5rem);
+            text-transform: uppercase;
+            position: relative;
+            display: inline-block;
+            text-shadow: 0 0 40px rgba(0, 243, 255, 0.4);
+            line-height: 1.2;
+            margin: 2rem 0;
+        }
+
+        .title-glitch::before,
+        .title-glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0.8;
+        }
+
+        .title-glitch::before {
+            color: var(--cyber-purple);
+            animation: glitch-1 2s infinite linear alternate-reverse;
+        }
+
+        .title-glitch::after {
+            color: var(--neon-blue);
+            animation: glitch-2 2s infinite linear alternate-reverse;
+        }
+
+        @keyframes glitch-1 {
+            0% { transform: translate(0); }
+            20% { transform: translate(-3px, 3px); }
+            40% { transform: translate(-3px, -3px); }
+            60% { transform: translate(3px, 3px); }
+            80% { transform: translate(3px, -3px); }
+            100% { transform: translate(0); }
+        }
+
+        .service-duo {
+            display: grid;
+            grid-template-columns: 1fr 120px 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        @media (max-width: 1024px) {
+            .service-duo {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto 80px auto;
+            }
+            
+            .divider-x {
+                transform: rotate(0deg);
+                margin: 2rem 0;
+            }
+        }
+
+        .divider-x {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            color: var(--neon-blue);
+            text-align: center;
+            transform: rotate(15deg);
+            text-shadow: 0 0 30px var(--neon-blue);
+        }
+
+        .cyber-card {
+            background: linear-gradient(145deg, 
+                rgba(0, 243, 255, 0.05), 
+                rgba(188, 0, 255, 0.05));
+            border: 2px solid var(--neon-blue);
+            border-radius: 20px;
+            padding: 2rem;
+            position: relative;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(12px);
+        }
+
+        @media (max-width: 768px) {
+            .cyber-frame {
+                padding: 2rem 1rem;
+            }
+            
+            .cyber-card {
+                padding: 1.5rem;
+            }
+            
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .cyber-card:hover {
+            transform: translateY(-10px) perspective(1000px) rotateX(2deg);
+        }
+
+        .card-header {
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 2px solid var(--neon-blue);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            color: var(--neon-blue);
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .cyber-feature {
+            padding: 1.5rem;
+            background: rgba(0, 243, 255, 0.05);
+            border: 1px solid rgba(0, 243, 255, 0.1);
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .discord-portal {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            padding: 1.5rem;
+            font-size: 1.2rem;
+            background: linear-gradient(45deg, 
+                var(--neon-blue), 
+                var(--cyber-purple));
+            color: black !important;
+            border-radius: 15px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            margin-top: 2rem;
+            font-weight: 700;
+            border: 2px solid var(--neon-blue);
+        }
+
+        .discord-portal:hover {
+            box-shadow: 0 0 40px rgba(0, 243, 255, 0.3);
+            letter-spacing: 1px;
+        }
+
+        .stats-wall {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 6rem 0;
+        }
+
+        .stat-pillar {
+            text-align: center;
+            padding: 2rem;
+            border: 2px solid var(--neon-blue);
+            border-radius: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-value {
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, 
+                var(--neon-blue), 
+                var(--cyber-purple));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin: 1rem 0;
+        }
+
+        .particle-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .content-section {
+            max-width: 800px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+
+        .partner-image {
+            max-width: min(600px, 90%);
+            margin: 3rem auto;
+            border: 2px solid var(--neon-blue);
+            border-radius: 15px;
+            filter: drop-shadow(0 0 15px rgba(0, 243, 255, 0.3));
+        }
+
+        .developed-by {
+            color: var(--hologram-teal);
+            font-family: 'Orbitron', sans-serif;
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 2px solid var(--neon-blue);
+            text-align: center;
+            font-size: clamp(0.9rem, 2vw, 1.1rem);
+        }
+    </style>
+</head>
+<body>
+    <canvas class="particle-canvas" id="particles"></canvas>
+
+    <div class="cyber-frame">
+        <header class="main-header">
+            <h1 class="title-glitch" data-text="VelocityHost⊗TunisianDreams">
+                VelocityHost⊗TunisianDreams
+            </h1>
+        </header>
+
+        <div class="service-duo">
+            <div class="cyber-card">
+                <div class="card-header">
+                    <i class="fa-solid fa-server service-icon"></i>
+                    <h2>VelocityHost</h2>
+                    <p>Enterprise-Grade Hosting Solutions</p>
+                </div>
+
+                <div class="feature-grid">
+                    <div class="cyber-feature">
+                        <i class="fa-solid fa-bolt"></i>
+                        <h3>Lightning Servers</h3>
+                        <p>NVMe SSD arrays with quantum caching</p>
+                    </div>
+                    <div class="cyber-feature">
+                        <i class="fa-solid fa-shield-halved"></i>
+                        <h3>DDoS Fortress</h3>
+                        <p>Multi-layer attack mitigation system</p>
+                    </div>
+                    <div class="cyber-feature">
+                        <i class="fa-solid fa-infinity"></i>
+                        <h3>100% Uptime</h3>
+                        <p>Triple-redundant network backbone</p>
+                    </div>
+                    <div class="cyber-feature">
+                        <i class="fa-solid fa-robot"></i>
+                        <h3>AI Support</h3>
+                        <p>Neural network assisted troubleshooting</p>
+                    </div>
+                </div>
+
+                <a href="https://discord.gg/velocityhost" class="discord-portal">
+                    <i class="fab fa-discord"></i>
+                    Join Velocity Network
+                </a>
+            </div>
+
+            <div class="divider-x">X</div>
+
+            <div class="cyber-card">
+                <div class="card-header">
+                    <i class="fa-solid fa-vr-cardboard service-icon"></i>
+                    <h2>Tunisian Dreams</h2>
+                    <p>Next-Gen Roleplay Experience</p>
+                </div>
+
+                <div class="feature-grid">
+                    <div class="cyber-feature">
+                        <i class="fa-solid fa-tower-broadcast"></i>
+                        <h3>Zero Latency</h3>
+                        <p>Edge-computed game instances</p>
+                    </div>
+                    <div class="cyber-feature">
+                        <i class="fa-solid fa-users-gear"></i>
+                        <h3>Active Community</h3>
+                        <p>5000+ registered members</p>
+                    </div>
+                    <div class="cyber-feature">
+                        <i class="fa-solid fa-shield"></i>
+                        <h3>Secure Platform</h3>
+                        <p>Military-grade encryption</p>
+                    </div>
+                    <div class="cyber-feature">
+                        <i class="fa-solid fa-calendar-star"></i>
+                        <h3>Daily Events</h3>
+                        <p>Curated by AI Game Masters</p>
+                    </div>
+                </div>
+
+                <a href="https://discord.gg/ZqdReDWzVF" class="discord-portal">
+                    <i class="fab fa-discord"></i>
+                    Enter Dreamscape
+                </a>
+            </div>
+        </div>
+
+        <div class="stats-wall">
+            <div class="stat-pillar">
+                <div class="stat-value">99.99%</div>
+                <p>Network Uptime</p>
+            </div>
+            <div class="stat-pillar">
+                <div class="stat-value">1.2ms</div>
+                <p>Avg. Latency</p>
+            </div>
+            <div class="stat-pillar">
+                <div class="stat-value">∞</div>
+                <p>Scalability</p>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <div class="cyber-card">
+                <h2>VelocityHost x Tunisian Dreams RolePlay</h2>
+                <p style="margin: 2rem 0; line-height: 1.6;">
+                    VelocityHost stands as a premier Tunisian company, specializing in a diverse array of online services. Our offerings include virtual servers, online game servers, and robust DDoS protection. We take pride in our expertise in this field and our unwavering commitment to delivering dependable, secure, and high-performance services that pave the way for your online success.<br><br>
+                    
+                    Our servers are meticulously optimized for top-notch speed and performance, and we go the extra mile with advanced DDoS protection, ensuring your website and online games stay up and running, no matter what. Count on our team of seasoned experts who are at your service 24/7, ready to assist you with any challenges that may arise.<br><br>
+                    
+                    Don't hesitate to reach out to us today to discover more about our comprehensive suite of services and how we can elevate your online presence to new heights.
+                </p>
+            </div>
+
+            <img src="V_20241113_013249_0000.png" 
+                 alt="Partner Announcement" 
+                 class="partner-image">
+
+            <div class="developed-by">
+                DEVELOPED BY COSMIC ▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮▮
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('particles');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const particles = [];
+        const particleCount = 150;
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 1;
+                this.speedX = Math.random() * 3 - 1.5;
+                this.speedY = Math.random() * 3 - 1.5;
+                this.color = `rgba(0, 243, 255, ${Math.random() * 0.4})`;
+            }
+
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+
+                if (this.x > canvas.width) this.x = 0;
+                if (this.x < 0) this.x = canvas.width;
+                if (this.y > canvas.height) this.y = 0;
+                if (this.y < 0) this.y = canvas.height;
+            }
+
+            draw() {
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function init() {
+            for (let i = 0; i < particleCount; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            particles.forEach(particle => {
+                particle.update();
+                particle.draw();
+            });
+            
+            requestAnimationFrame(animate);
+        }
+
+        init();
+        animate();
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            init();
+        });
+    </script>
+</body>
+</html>
